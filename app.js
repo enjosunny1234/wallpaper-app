@@ -339,7 +339,7 @@ function closeViewer() {
     setTimeout(() => {
         elements.viewerMediaContainer.innerHTML = ''; // Clean up memory and stop video audio
     }, 200);
-}
+ }
 
 // Start App
 init();
