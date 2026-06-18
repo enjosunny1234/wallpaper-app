@@ -130,5 +130,8 @@ function setupEventListeners() {
             state.currentUser = { email, name: user.name };
         }
         
-        localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
-        elements.authForm.reset();});
+        localStorage.setItem('currentUser',
+        JSON.stringify(state.currentUser));
+        elements.authForm.reset();
+        checkAuthState();
+    });
