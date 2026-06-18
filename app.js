@@ -131,4 +131,4 @@ function setupEventListeners() {
         }
         
         localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
-        elements.authForm.reset
+        elements.authForm.reset();});
