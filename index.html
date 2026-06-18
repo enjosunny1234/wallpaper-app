@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Phosphor Icons (Sleek, modern icons) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Dynamic Background -->
@@ -18,10 +18,32 @@
     <div class="glow-blob blob-1"></div>
     <div class="glow-blob blob-2"></div>
 
-    <!-- API Key Modal -->
-    <div id="apiKeyModal" class="modal glass">
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal glass active">
         <div class="modal-content">
-            <h2>Welcome to Expressive</h2>
+            <h2 id="authTitle">Sign In</h2>
+            <p id="authSubtitle">Welcome back to Expressive Wallpapers.</p>
+            
+            <form id="authForm">
+                <input type="text" id="authName" placeholder="Full Name" autocomplete="name" class="hidden">
+                <input type="email" id="authEmail" placeholder="Email address" autocomplete="email" required>
+                <input type="password" id="authPassword" placeholder="Password" autocomplete="current-password" required>
+                <p id="authError" class="error-text hidden">Invalid credentials.</p>
+                
+                <button type="submit" class="btn-primary w-full" id="authSubmitBtn">Sign In</button>
+            </form>
+            
+            <p class="modal-hint mt-4">
+                <span id="authToggleText">Don't have an account?</span> 
+                <a href="#" id="authToggleBtn">Sign Up</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- API Key Modal -->
+    <div id="apiKeyModal" class="modal glass hidden">
+        <div class="modal-content">
+            <h2>Welcome, <span id="welcomeName">User</span></h2>
             <p>To fetch stunning wallpapers, please enter your free Pexels API key.</p>
             <input type="text" id="apiKeyInput" placeholder="Enter Pexels API Key..." autocomplete="off">
             <button id="saveApiKeyBtn" class="btn-primary">Save Key & Start</button>
@@ -44,17 +66,25 @@
                 </div>
 
                 <div class="tabs">
-                    <button class="tab active" data-orientation="landscape">
+                    <button class="tab active" data-type="photos" data-orientation="landscape">
                         <i class="ph ph-desktop"></i> Desktop
                     </button>
-                    <button class="tab" data-orientation="portrait">
+                    <button class="tab" data-type="photos" data-orientation="portrait">
                         <i class="ph ph-device-mobile"></i> Mobile
+                    </button>
+                    <button class="tab" data-type="videos" data-orientation="landscape">
+                        <i class="ph ph-video-camera"></i> Animated
                     </button>
                 </div>
 
-                <button id="settingsBtn" class="btn-icon" title="Settings">
-                    <i class="ph ph-gear"></i>
-                </button>
+                <div class="user-controls">
+                    <button id="settingsBtn" class="btn-icon" title="API Settings">
+                        <i class="ph ph-gear"></i>
+                    </button>
+                    <button id="logoutBtn" class="btn-icon" title="Sign Out">
+                        <i class="ph ph-sign-out"></i>
+                    </button>
+                </div>
             </div>
         </header>
 
@@ -66,10 +96,12 @@
         </main>
     </div>
 
-    <!-- Fullscreen Image Viewer -->
+    <!-- Fullscreen Viewer -->
     <div id="viewerModal" class="viewer-modal">
         <button id="closeViewer" class="btn-icon close-viewer"><i class="ph ph-x"></i></button>
-        <img id="viewerImage" src="" alt="Fullscreen wallpaper">
+        <div id="viewerMediaContainer" class="viewer-media-container">
+            <!-- Image or Video injected here -->
+        </div>
         <div class="viewer-controls glass">
             <div class="photographer-info">
                 <i class="ph ph-user"></i>
@@ -81,6 +113,6 @@
         </div>
     </div>
 
-    <script type="module" src="app.js"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>
