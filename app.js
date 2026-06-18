@@ -135,3 +135,5 @@ function setupEventListeners() {
         elements.authForm.reset();
         checkAuthState();
     });
+}
+init();
