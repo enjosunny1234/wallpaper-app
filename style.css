@@ -366,7 +366,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-90%, -50%);
-    width: 220px;
+    width: 230px;
     z-index: 20;
     pointer-events: none;
     opacity: 0;
